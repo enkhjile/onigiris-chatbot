@@ -8,11 +8,8 @@ app = Flask(__name__)
 def verify():
     VERIFICATION_TOKEN = os.environ.get('VERIFICATION_TOKEN')
     token_sent = request.args.get('hub.verify_token')
-    print(token_sent)
-    print(VERIFICATION_TOKEN)
     if token_sent == VERIFICATION_TOKEN:
-        print(request.args.get('hug.challenge'))
-        return request.args.get('hug.challenge')
+        return request.args.get('hub.challenge')
     return 'Invalid verification token!'
 
 
